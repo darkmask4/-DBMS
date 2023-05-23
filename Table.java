@@ -1,8 +1,10 @@
 package dbms;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -79,5 +81,37 @@ public class Table {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public static void inTable(String tableName)
+	{
+		FileWriter f=null;//创建文件写入对象
+		BufferedWriter f1=null;//创建字符流写入对象
+		
+		try {
+		f=new FileWriter(tableName+".txt");
+		f1=new BufferedWriter(f);
+		
+		for(int i=0;i<Column.size();i++)
+		{
+			List<Object> a=new ArrayList<>();
+			f1.write(Column.get(i)+"       "+Type.get(i)+"       ");
+			a=Table.get(Column.get(i));
+			for(int j=0;j<a.size();j++)
+			{	
+				f1.write(String.valueOf(a.get(j))+"       ");	
+			}
+			f1.newLine();
+		}
+		}catch(Exception e){
+			
+		}finally {//如果没有catch 异常，程序最终会执行到这里
+			try {
+			f1.close();
+			f.close();//关闭文件
+		} catch (Exception e2) {
+			// TODO: handle exception
+		}
+	}
 	}
 }
