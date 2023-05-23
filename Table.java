@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-//create table s ( sname char(6),sno int );
-//insert into s values ( Li,6 );
+
 
 public class Table {
 	public static List<String> Type;
