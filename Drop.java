@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Drop {
-	private static final Pattern PATTERN_DROP_TABLE = Pattern.compile("drop table (\\w)");
+	private static final Pattern PATTERN_DROP_TABLE = Pattern.compile("drop table (.*)");
 	public static boolean Ifdrop_table(String s)
 	{
 		Matcher drop_table=PATTERN_DROP_TABLE.matcher(s);

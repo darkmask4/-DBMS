@@ -40,7 +40,10 @@ public class Table {
 				{
 					for(int i=2;i<column.length;i++)
 					{
-						column_1.add(Integer.parseInt(column[i]));
+						if(column[i].equals("null"))
+							column_1.add(column[i]);
+						else
+							column_1.add(Integer.parseInt(column[i]));
 					}
 				}
 				
@@ -48,7 +51,10 @@ public class Table {
 				{
 					for(int i=2;i<column.length;i++)
 					{
-						column_1.add(column[i].charAt(0));
+						if(column[i].equals("null"))
+							column_1.add(column[i]);
+						else
+							column_1.add(column[i].charAt(0));
 					}
 				}
 				
@@ -65,7 +71,10 @@ public class Table {
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 					for(int i=2;i<column.length;i++)
 					{
-						column_1.add(formatter.parse(column[i]));
+						if(column[i].equals("null"))
+							column_1.add(column[i]);
+						else
+							column_1.add(formatter.parse(column[i]));
 					}
 				}
 				

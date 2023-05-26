@@ -3,12 +3,11 @@ package dbms;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class Create {
-	private static final Pattern PATTERN_CREATE_TABLE = Pattern.compile("create table (\\w) \\( (.*) \\)");
+	private static final Pattern PATTERN_CREATE_TABLE = Pattern.compile("create table (.*) \\( (.*) \\)");
 	
 	public static boolean Ifcreate_table(String s)
 	{
