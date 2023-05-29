@@ -124,7 +124,7 @@ public class Window {
 						Drop.Ifdrop_table(Format.sqlFormat(sqlText.getText()));
 						Alter.Ifalter_table(Format.sqlFormat(sqlText.getText()));
 						Insert.Ifinsert(Format.sqlFormat(sqlText.getText()));
-						
+						Update.Ifupdate(Format.sqlFormat(sqlText.getText()));
 					}
 				}
 			});
