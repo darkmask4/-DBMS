@@ -4,6 +4,7 @@ import javax.print.DocFlavor.STRING;
  public class User{
    String id;
    String password;
+   public static String access;
 
    User(String id, String password){
      this.id = id;
@@ -34,7 +35,7 @@ import javax.print.DocFlavor.STRING;
     }
 
     //从文件中读取用户信息
-    public static ArrayList<User> readFromFile(){
+    public static ArrayList<User> readFromFile(String id, String password){
       ArrayList<User> users = new ArrayList<User>();
       try{
         File file = new File("user.txt");
@@ -52,6 +53,26 @@ import javax.print.DocFlavor.STRING;
         e.printStackTrace();
       }
       return users;
+    }
+
+    public static boolean login(String id,String password){
+      ArrayList<User> users = readFromFile(id, password);
+      for(User user : users){
+        if(user.getId().equals(id) && user.getPassword().equals(password)){
+          return true;
+        }
+      }
+      return false;
+    }
+    public static boolean register(String id){
+      //如果用户名已存在，返回false
+      ArrayList<User> users = readFromFile(id, "");
+      for(User user : users){
+        if(user.getId().equals(id)){
+          return false;
+        }
+      }
+      return true;
     }
     
     
