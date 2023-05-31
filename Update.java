@@ -1,4 +1,4 @@
-package dbms;
+package DMBS;
 
 import java.io.File;
 import java.util.List;

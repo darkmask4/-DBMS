@@ -1,11 +1,13 @@
-package dbms;
+package DMBS;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 public class User{
 	 public static String access;
+   public static String userName;
 
-    //×¢²áÊ±½«ÓÃ»§ĞÅÏ¢Ğ´ÈëÎÄ¼ş
+    //æ³¨å†Œæ—¶å°†ç”¨æˆ·ä¿¡æ¯å†™å…¥æ–‡ä»¶
 	 public static boolean Register(String id, String password){
       try{
         File file = new File("user.txt");
@@ -14,9 +16,9 @@ public class User{
           String line = null;
           while((line = br.readLine()) != null){
             String[] info = line.split(" ");
-            //ÅĞ¶ÏÓÃ»§ÃûÊÇ·ñÒÑ´æÔÚ
+            //åˆ¤æ–­ç”¨æˆ·åæ˜¯å¦å·²å­˜åœ¨
             if(info[0].equals(id)){
-              System.out.println("¸ÃÓÃ»§ÒÑ´æÔÚ");
+              System.out.println("è¯¥ç”¨æˆ·å·²å­˜åœ¨");
               br.close();
               fr.close();
               return false;
@@ -37,7 +39,7 @@ public class User{
       return true;
     }
 	 
-    //µÇÈëÑéÖ¤
+    //ç™»å…¥éªŒè¯
     public static boolean login(String id,String password){
       try{
         File file = new File("user.txt");
@@ -46,9 +48,11 @@ public class User{
           String line = null;
           while((line = br.readLine()) != null){
             String[] info = line.split(" ");
-            //ÅĞ¶ÏÓÃ»§ÃûºÍÃÜÂëÊÇ·ñÕıÈ·
+            //åˆ¤æ–­ç”¨æˆ·åå’Œå¯†ç æ˜¯å¦æ­£ç¡®
             if(id.equals(info[0]) && password.equals(info[1])){
+
               access = info[2];
+              userName = info[0];
               br.close();
               fr.close();
               return true;
@@ -68,7 +72,7 @@ public class User{
     		boolean a=false;
             File file = new File("user.txt");
             List<String> User = new ArrayList<>();
-            //½«user.txtÖĞµÄÄÚÈİ¶ÁÈëµ½UserÖĞ
+            //å°†user.txtä¸­çš„å†…å®¹è¯»å…¥åˆ°Userä¸­
             try{
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
@@ -87,7 +91,7 @@ public class User{
                     User.remove(i);
                 }
             }
-            //½«UserÖĞµÄÄÚÈİĞ´Èëµ½user.txtÖĞ
+            //å°†Userä¸­çš„å†…å®¹å†™å…¥åˆ°user.txtä¸­
             try{
                 FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw);
@@ -103,4 +107,6 @@ public class User{
     return a;
  }
 }
+ 
+
  

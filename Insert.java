@@ -1,4 +1,4 @@
-package dbms;
+package DMBS;
 
 import java.io.File;
 import java.util.List;
@@ -29,13 +29,13 @@ public class Insert {
 				{
 					if(j<column_1.length)
 					{
-						if(column_1[j].equals(Table.Column.get(i)))//ÓĞµÄ¸³ÏàÓ¦Öµ
+						if(column_1[j].equals(Table.Column.get(i)))//æœ‰çš„èµ‹ç›¸åº”å€¼
 						{
 							List<Object> value=Table.Table.get(Table.Column.get(i));
 							value.add(column[j]);
 							j++;
 						}
-						else//°ÑÃ»ÓĞµÄÉè³Énull
+						else//æŠŠæ²¡æœ‰çš„è®¾æˆnull
 						{
 							List<Object> value=Table.Table.get(Table.Column.get(i));
 							value.add("null");
@@ -66,7 +66,7 @@ public class Insert {
 			
 			File table=new File(tableName+".txt");
 			
-			if(table.exists())//ĞŞ¸ÄTableÀïµÄÄÚÈİ
+			if(table.exists())//ä¿®æ”¹Tableé‡Œçš„å†…å®¹
 			{
 				Table.getTable(tableName);
 				for(int i=0;i<Table.Column.size();i++) {

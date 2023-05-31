@@ -1,4 +1,4 @@
-package dbms;
+package DMBS;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,6 +37,7 @@ public class Alter {
 				}
 				Table.Table.put(column_name, a);
 				Table.inTable(tableName);
+				return true;
 			}
 			else
 			{
@@ -69,6 +70,7 @@ public class Alter {
 				
 				Table.Type.remove(i);
 				Table.inTable(tableName);
+				return true;
 			}
 			else
 			{
@@ -100,9 +102,10 @@ public class Alter {
 					i++;
 				}
 				Table.inTable(tableName);
+				return true;
 			}
 		}
 		
-		return alter_table.find();
+		return false;
 	}
 }
