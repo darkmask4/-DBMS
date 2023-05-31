@@ -156,28 +156,28 @@ public class Grant {
             }
 
             for(int i = 0;i < right.length;i++){
-                if(right[i].equals("select")&&power[0] == '2'){
+                if(right[i].equals("select")&&power[0] == '2'&&user_Power[0] != '2'){
                     user_Power[0] = '1';
                 }
-                else if(right[i].equals("insert")&&power[1] == '2'){
+                else if(right[i].equals("insert")&&power[1] == '2'&&user_Power[1] != '2'){
                     user_Power[1] = '1';
                 }
-                else if(right[i].equals("update")&&power[2] == '2'){
+                else if(right[i].equals("update")&&power[2] == '2'&&user_Power[2] != '2'){
                     user_Power[2] = '1';
                 }
-                else if(right[i].equals("delete")&&power[3] == '2'){
+                else if(right[i].equals("delete")&&power[3] == '2'&&user_Power[3] != '2'){
                     user_Power[3] = '1';
                 }
-                else if(right[i].equals("create")&&power[4] == '2'){
+                else if(right[i].equals("create")&&power[4] == '2'&&user_Power[4] != '2'){
                     user_Power[4] = '1';
                 }
-                else if(right[i].equals("drop")&&power[5] == '2'){
+                else if(right[i].equals("drop")&&power[5] == '2'&&user_Power[5] != '2'){
                     user_Power[5] = '1';
                 }
-                else if(right[i].equals("alter")&&power[6] == '2'){
+                else if(right[i].equals("alter")&&power[6] == '2'&&user_Power[6] != '2'){
                     user_Power[6] = '1';
                 }
-                else if(right[i].equals("all")&&userPower == "2222222"){
+                else if(right[i].equals("all")&&User.access == "2222222"&&userPower != "2222222"){
                     for(int j = 0;j < 7;j++){
                         user_Power[j] = '1';
                     }
