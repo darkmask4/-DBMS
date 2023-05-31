@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 public class Delete {
-    //ÒÔdelete¿ªÍ·µÄsqlÓï¾ä
+    //ä»¥deleteå¼€å¤´çš„sqlè¯­å¥
     private static final Pattern pattern1 = 
     Pattern.compile("delete from ([a-z]+) where (.*)");
     private static final Pattern pattern2 = 
@@ -13,8 +13,8 @@ public class Delete {
     public static boolean ifdelete(String sql){
         Matcher matcher1 = pattern1.matcher(sql);
         if (matcher1.find()) {
-            String tableName = matcher1.group(1);  // »ñÈ¡±íÃû
-            //ÅĞ¶Ï±íÊÇ·ñ´æÔÚ
+            String tableName = matcher1.group(1);  // è·å–è¡¨å
+            //åˆ¤æ–­è¡¨æ˜¯å¦å­˜åœ¨
             File table = new File(tableName+".txt");
             if(table.exists()){
                 Table.getTable(tableName);
@@ -25,7 +25,7 @@ public class Delete {
             		  a.remove((int) result.get(j));
             	  }
               }
-                //°ÑÉ¾³ıºóµÄÊı¾İĞ´ÈëÎÄ¼ş
+                //æŠŠåˆ é™¤åçš„æ•°æ®å†™å…¥æ–‡ä»¶
                 Table.inTable(tableName);
                 return true;
             }
@@ -35,12 +35,14 @@ public class Delete {
     
         matcher1 = pattern2.matcher(sql);
         if(matcher1.find()){
-            String tableName1 = matcher1.group(1);//»ñÈ¡±íÃû
-            //Çå¿ÕÕû¸ö±í£¬Ö»ÁôÏÂÁĞÃûºÍÊı¾İÀàĞÍ
+            String tableName1 = matcher1.group(1);//è·å–è¡¨å
+            //æ¸…ç©ºæ•´ä¸ªè¡¨ï¼Œåªç•™ä¸‹åˆ—åå’Œæ•°æ®ç±»å‹
             File table2 = new File(tableName1+".txt");
             if(table2.exists()){
-                //Çå¿ÕÕû¸ö±í£¬Ö»ÁôÏÂÁĞÃûºÍÊı¾İÀàĞÍ
+                //æ¸…ç©ºæ•´ä¸ªè¡¨ï¼Œåªç•™ä¸‹åˆ—åå’Œæ•°æ®ç±»å‹
+                Table.getTable(tableName1);
                 Table.Table.clear();
+                Table.inTable(tableName1);
                 return true;
         }
         else
