@@ -1,3 +1,4 @@
+package dbms;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,14 +11,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 
 public class Grant {
-    //ä»¥grantå¼€å¤´çš„sqlè¯­å¥,è¿˜æœ‰WITH GRANT OPTION
-    private static final Pattern PATTERN_GRANT1 = Pattern.compile("grant (.*) to (.*) WITH GRANT OPTION");
+    //ÒÔgrant¿ªÍ·µÄsqlÓï¾ä,»¹ÓĞWITH GRANT OPTION
+    private static final Pattern PATTERN_GRANT1 = Pattern.compile("grant (.*) to (.*) with check option");
     private static final Pattern PATTERN_GRANT2 = Pattern.compile("grant (.*) to (.*)");
 
      public static void updatePermission(String userName, String power1) {
         File file = new File("user.txt");
         List<String> User = new ArrayList<>();
-        //å°†user.txtä¸­çš„å†…å®¹è¯»å…¥åˆ°Userä¸­
+        //½«user.txtÖĞµÄÄÚÈİ¶ÁÈëµ½UserÖĞ
         try{
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
@@ -35,7 +36,7 @@ public class Grant {
                 User.set(i,userName+" "+info[1]+" "+power1);
             }
         }
-        //å°†Userä¸­çš„å†…å®¹å†™å…¥åˆ°user.txtä¸­
+        //½«UserÖĞµÄÄÚÈİĞ´Èëµ½user.txtÖĞ
         try{
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -75,19 +76,19 @@ public class Grant {
         if(grant1.find()){
             String[]right = grant1.group(1).split(",");
             String userName = grant1.group(2);
-            //æ ¹æ®ç”¨æˆ·åæ‰¾åˆ°è¯¥ç”¨æˆ·çš„æƒé™
+            //¸ù¾İÓÃ»§ÃûÕÒµ½¸ÃÓÃ»§µÄÈ¨ÏŞ
             String userPower = getUserPower(userName);
-            //å°†è¢«ä¿®æ”¹äººçš„æƒé™è½¬åŒ–ä¸ºå­—ç¬¦æ•°ç»„
+            //½«±»ĞŞ¸ÄÈËµÄÈ¨ÏŞ×ª»¯Îª×Ö·ûÊı×é
             char []user_Power = new char[7];
             try{
             for(int i = 0;i < 7;i++){
                 char c = userPower.charAt(i);
                 user_Power[i] = c;
             }}catch(IndexOutOfBoundsException e){
-                System.out.println("è¯¥ç”¨æˆ·ä¸å­˜åœ¨");
+                System.out.println("¸ÃÓÃ»§²»´æÔÚ");
                 return false;
             }
-            //å°†ç™»å…¥ç”¨æˆ·çš„æƒé™è½¬åŒ–ä¸ºå­—ç¬¦æ•°ç»„
+            //½«µÇÈëÓÃ»§µÄÈ¨ÏŞ×ª»¯Îª×Ö·ûÊı×é
             char []power = new char[7];
             for(int i = 0;i < 7;i++){
                 char c = User.access.charAt(i);
@@ -116,18 +117,18 @@ public class Grant {
                 else if(right[i].equals("alter")&&power[6] == '2'){
                     user_Power[6] = '2';
                 }
-                else if(right[i].equals("all")&&userPower == "2222222"){
+                else if(right[i].equals("all")&&User.access.equals("2222222")){
                     for(int j = 0;j < 7;j++){
                         user_Power[j] = '2';
                     }
                 }
             }
-            //å°†powerè½¬åŒ–ä¸ºå­—ç¬¦ä¸²
+            //½«power×ª»¯Îª×Ö·û´®
             String power1 = "";
             for(int i = 0;i < 7;i++){
                 power1 += user_Power[i];
             }
-            //å°†power1ä¿®æ”¹åŸæ¥è¯¥ç”¨æˆ·çš„æƒé™ï¼Œå†™å…¥user.txt
+            //½«power1ĞŞ¸ÄÔ­À´¸ÃÓÃ»§µÄÈ¨ÏŞ£¬Ğ´Èëuser.txt
             updatePermission(userName,power1);
             return true;
 
@@ -136,19 +137,19 @@ public class Grant {
     if(grant2.find()){
             String[]right = grant2.group(1).split(",");
             String userName = grant2.group(2);
-             //æ ¹æ®ç”¨æˆ·åæ‰¾åˆ°è¯¥ç”¨æˆ·çš„æƒé™
+             //¸ù¾İÓÃ»§ÃûÕÒµ½¸ÃÓÃ»§µÄÈ¨ÏŞ
             String userPower = getUserPower(userName);
-            //å°†è¢«ä¿®æ”¹äººçš„æƒé™è½¬åŒ–ä¸ºå­—ç¬¦æ•°ç»„
+            //½«±»ĞŞ¸ÄÈËµÄÈ¨ÏŞ×ª»¯Îª×Ö·ûÊı×é
             char []user_Power = new char[7];
             try{
             for(int i = 0;i < 7;i++){
                 char c = userPower.charAt(i);
                 user_Power[i] = c;
             }}catch(IndexOutOfBoundsException e){
-                System.out.println("è¯¥ç”¨æˆ·ä¸å­˜åœ¨");
+                System.out.println("¸ÃÓÃ»§²»´æÔÚ");
                 return false;
             }
-            //å°†ç™»å…¥ç”¨æˆ·çš„æƒé™è½¬åŒ–ä¸ºå­—ç¬¦æ•°ç»„
+            //½«µÇÈëÓÃ»§µÄÈ¨ÏŞ×ª»¯Îª×Ö·ûÊı×é
             char []power = new char[7];
             for(int i = 0;i < 7;i++){
                 char c = User.access.charAt(i);
@@ -177,18 +178,18 @@ public class Grant {
                 else if(right[i].equals("alter")&&power[6] == '2'&&user_Power[6] != '2'){
                     user_Power[6] = '1';
                 }
-                else if(right[i].equals("all")&&User.access == "2222222"&&userPower != "2222222"){
+                else if(right[i].equals("all")&&User.access.equals("2222222")&&!userPower.equals("2222222")){
                     for(int j = 0;j < 7;j++){
                         user_Power[j] = '1';
                     }
                 }
             }
-            //å°†powerè½¬åŒ–ä¸ºå­—ç¬¦ä¸²
+            //½«power×ª»¯Îª×Ö·û´®
             String power1 = "";
             for(int i = 0;i < 7;i++){
                 power1 += user_Power[i];
             }
-            //å°†power1ä¿®æ”¹åŸæ¥è¯¥ç”¨æˆ·çš„æƒé™ï¼Œå†™å…¥user.txt
+            //½«power1ĞŞ¸ÄÔ­À´¸ÃÓÃ»§µÄÈ¨ÏŞ£¬Ğ´Èëuser.txt
             updatePermission(userName,power1);
             return true;
 

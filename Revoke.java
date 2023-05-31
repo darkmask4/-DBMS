@@ -1,3 +1,4 @@
+package dbms;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.io.File;
@@ -36,7 +37,7 @@ public class Revoke {
     public static void updatePermission(String userName, String power1) {
         File file = new File("user.txt");
         List<String> User = new ArrayList<>();
-        //å°†user.txtä¸­çš„å†…å®¹è¯»å…¥åˆ°Userä¸­
+        //½«user.txtÖĞµÄÄÚÈİ¶ÁÈëµ½UserÖĞ
         try{
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
@@ -54,7 +55,7 @@ public class Revoke {
                 User.set(i,userName+" "+info[1]+" "+power1);
             }
         }
-        //å°†Userä¸­çš„å†…å®¹å†™å…¥åˆ°user.txtä¸­
+        //½«UserÖĞµÄÄÚÈİĞ´Èëµ½user.txtÖĞ
         try{
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -74,14 +75,14 @@ public class Revoke {
         if(revoke1.find()){
             String[]right = revoke1.group(1).split(",");
             String userName = revoke1.group(2);
-            //æ ¹æ®ç”¨æˆ·åæ‰¾åˆ°è¯¥ç”¨æˆ·çš„æƒé™
+            //¸ù¾İÓÃ»§ÃûÕÒµ½¸ÃÓÃ»§µÄÈ¨ÏŞ
             String userPower = getUserPower(userName);
-            //å°†è¢«ä¿®æ”¹äººçš„æƒé™è½¬åŒ–ä¸ºå­—ç¬¦æ•°ç»„
+            //½«±»ĞŞ¸ÄÈËµÄÈ¨ÏŞ×ª»¯Îª×Ö·ûÊı×é
             char []user_Power = new char[7];
             for(int i = 0;i < userPower.length();i++){
                 user_Power[i] = userPower.charAt(i);
             }
-            //å°†ç™»å…¥ç”¨æˆ·çš„æƒé™è½¬åŒ–ä¸ºå­—ç¬¦æ•°ç»„
+            //½«µÇÈëÓÃ»§µÄÈ¨ÏŞ×ª»¯Îª×Ö·ûÊı×é
             char []power = new char[7];
             for(int i = 0;i < 7;i++){
                 char c = User.access.charAt(i);
@@ -109,14 +110,14 @@ public class Revoke {
                 else if(right[i].equals("alter")&&power[6] == '2'&&user_Power[6] != '0'){
                     user_Power[6] = '1';
                 }
-                else if(right[i].equals("all")&&userPower == "2222222"){
+                else if(right[i].equals("all")&&User.access.equals("2222222")){
                     for(int j = 0;j < 7;j++){
                         user_Power[j] = '1';
                     }
                 }
                 }
             String newPower = String.valueOf(user_Power);
-            //å°†ä¿®æ”¹åçš„æƒé™å†™å…¥æ–‡ä»¶
+            //½«ĞŞ¸ÄºóµÄÈ¨ÏŞĞ´ÈëÎÄ¼ş
             updatePermission(userName,newPower);
             return true;
 
@@ -125,14 +126,14 @@ public class Revoke {
         if(revoke2.find()){
             String[]right = revoke2.group(1).split(",");
             String userName = revoke2.group(2);
-            //æ ¹æ®ç”¨æˆ·åæ‰¾åˆ°è¯¥ç”¨æˆ·çš„æƒé™
+            //¸ù¾İÓÃ»§ÃûÕÒµ½¸ÃÓÃ»§µÄÈ¨ÏŞ
             String userPower = getUserPower(userName);
-            //å°†è¢«ä¿®æ”¹äººçš„æƒé™è½¬åŒ–ä¸ºå­—ç¬¦æ•°ç»„
+            //½«±»ĞŞ¸ÄÈËµÄÈ¨ÏŞ×ª»¯Îª×Ö·ûÊı×é
             char []user_Power = new char[7];
             for(int i = 0;i < userPower.length();i++){
                 user_Power[i] = userPower.charAt(i);
             }
-            //å°†ç™»å…¥ç”¨æˆ·çš„æƒé™è½¬åŒ–ä¸ºå­—ç¬¦æ•°ç»„
+            //½«µÇÈëÓÃ»§µÄÈ¨ÏŞ×ª»¯Îª×Ö·ûÊı×é
             char []power = new char[7];
             for(int i = 0;i < 7;i++){
                 char c = User.access.charAt(i);
@@ -160,14 +161,14 @@ public class Revoke {
                 else if(right[i].equals("alter")&&power[6] == '2'&&user_Power[6] != '0'){
                     user_Power[6] = '0';
                 }
-                else if(right[i].equals("all")&&userPower == "2222222"){
+                else if(right[i].equals("all")&&User.access.equals("2222222")){
                     for(int j = 0;j < 7;j++){
                         user_Power[j] = '0';
                     }
                 }
                 }
             String newPower = String.valueOf(user_Power);
-            //å°†ä¿®æ”¹åçš„æƒé™å†™å…¥æ–‡ä»¶
+            //½«ĞŞ¸ÄºóµÄÈ¨ÏŞĞ´ÈëÎÄ¼ş
             updatePermission(userName,newPower);
             return true;
 

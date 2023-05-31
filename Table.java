@@ -19,7 +19,7 @@ public class Table {
 	public static List<String> Column;
 	public static Map<String,List<Object>> Table;
 	
-	public static void getTable(String s)
+	public static void getTable(String s)//创建临时表
 	{
 		Type=new ArrayList<>();
 		Column=new ArrayList<>();
@@ -41,7 +41,7 @@ public class Table {
 					for(int i=2;i<column.length;i++)
 					{
 						if(column[i].equals("null"))
-							column_1.add(column[i]);
+							column_1.add("null");
 						else
 							column_1.add(Integer.parseInt(column[i]));
 					}
@@ -92,7 +92,7 @@ public class Table {
 		
 	}
 	
-	public static void inTable(String tableName)
+	public static void inTable(String tableName)//写入文件
 	{
 		FileWriter f=null;//创建文件写入对象
 		BufferedWriter f1=null;//创建字符流写入对象

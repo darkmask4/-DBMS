@@ -14,8 +14,8 @@ public class Test {
 		//update s set classname=djw where sname=cb;
 		//INSERT INTO class VALUES ( Rj0802,Software0802,SoftwareEngineering,School of Software Engineering,0 );
 		//INSERT INTO class VALUES ( Rj0803,Software0803,SoftwareEngineering,School of Software Engineering,0 );
-		//update class set classno=rj0804,classname=software0804 where studentnumber=0 and classsmajor=softwareengineering and classno=rj0801 or classno=rj0803;
-		
+		//update class set classno=rj0804,classname=software0804 where studentnumber not in (1,2) and classsmajor=softwareengineering and classno=rj0801 or classno=rj0803;
+		//select * from class where studentnumber>0 order by classno;
 		new Window().init();
 	}
 

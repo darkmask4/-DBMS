@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 
 public class Create {
 	private static final Pattern PATTERN_CREATE_TABLE = Pattern.compile("create table (.*) \\( (.*) \\)");
-	
+	private static final Pattern PATTERN_CREATE_USER = Pattern.compile("create user (.*) (.*)");
 	public static boolean Ifcreate_table(String s)
 	{
 		Matcher create_table=PATTERN_CREATE_TABLE.matcher(s);
@@ -62,12 +62,17 @@ public class Create {
 				// TODO: handle exception
 			}
 		}
-		
+		return true;
 		}
-		else
+		
+		Matcher create_user=PATTERN_CREATE_USER.matcher(s);
+		if(create_user.find())
 		{
-			return false;
-		}		
-		return create_table.find();
+			String username=create_user.group(1);
+			String password=create_user.group(2);
+			return User.Register(username, password);
+		}
+		
+		return (create_user.find()||create_table.find());
 	}
 }

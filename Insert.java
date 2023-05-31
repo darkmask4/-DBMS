@@ -10,32 +10,7 @@ public class Insert {
 	private static final Pattern PATTERN_INSERT_2 = Pattern.compile("insert into (.*) \\( (.*) \\) values \\( (.*) \\)");
 	public static boolean Ifinsert(String s)
 	{
-		Matcher insert=PATTERN_INSERT_1.matcher(s);
-		if(insert.find())
-		{
-			String tableName;
-			tableName=insert.group(1);
-			
-			String [] column=insert.group(2).split(",");
-			
-			File table=new File(tableName+".txt");
-			
-			if(table.exists())
-			{
-				Table.getTable(tableName);
-				for(int i=0;i<Table.Column.size();i++) {
-					List<Object> value=Table.Table.get(Table.Column.get(i));
-					value.add(column[i]);
-				}
-				Table.inTable(tableName);
-			
-			}
-			else 
-			{
-				return false;
-			}
-		}
-		insert=PATTERN_INSERT_2.matcher(s);
+		Matcher insert=PATTERN_INSERT_2.matcher(s);
 		if(insert.find())
 		{
 			String tableName;
@@ -54,13 +29,13 @@ public class Insert {
 				{
 					if(j<column_1.length)
 					{
-						if(column_1[j].equals(Table.Column.get(i)))
+						if(column_1[j].equals(Table.Column.get(i)))//有的赋相应值
 						{
 							List<Object> value=Table.Table.get(Table.Column.get(i));
 							value.add(column[j]);
 							j++;
 						}
-						else
+						else//把没有的设成null
 						{
 							List<Object> value=Table.Table.get(Table.Column.get(i));
 							value.add("null");
@@ -78,7 +53,36 @@ public class Insert {
 			{
 				return false;
 			}
+			return true;
 		}
+		
+		insert=PATTERN_INSERT_1.matcher(s);
+		if(insert.find())
+		{
+			String tableName;
+			tableName=insert.group(1);
+			
+			String [] column=insert.group(2).split(",");
+			
+			File table=new File(tableName+".txt");
+			
+			if(table.exists())//修改Table里的内容
+			{
+				Table.getTable(tableName);
+				for(int i=0;i<Table.Column.size();i++) {
+					List<Object> value=Table.Table.get(Table.Column.get(i));
+					value.add(column[i]);
+				}
+				Table.inTable(tableName);
+			
+			}
+			else 
+			{
+				return false;
+			}
+			return true;
+		}
+		
 			
 		return insert.find();	
 	}

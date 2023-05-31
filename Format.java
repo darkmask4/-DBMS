@@ -13,7 +13,6 @@ public class Format {
         String s = str.replaceFirst("( ;)$", ";");
         //去掉最后的;
         s=s.replaceAll(";", "");
-        //System.out.println(s);
         return s;
     }
 }
