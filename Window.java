@@ -128,6 +128,10 @@ public class Window {
 		 sqlText.setFont(new Font("ºÚÌå",1,25));
 		 panel.add(sqlText);
 		 
+		 JButton clearButton = new JButton("Çë¿Õ");
+	     clearButton.setBounds(1100, 65, 80, 25);
+	     panel.add(clearButton);
+	     
 		 JTable table=new JTable();
 		 DefaultTableModel tModel = new DefaultTableModel();
 		 table = new JTable(tModel);
@@ -208,5 +212,14 @@ public class Window {
 					}
 				}
 			});
+		 clearButton.addActionListener(new ActionListener() {
+	         @Override
+	         public void actionPerformed(ActionEvent e) {
+//	             µ¯´°
+	            	sqlText.setText("");
+	            	remindText.setText("");
+	            	tModel.setColumnCount(0);
+	         }
+	     });
 	 }
 }
