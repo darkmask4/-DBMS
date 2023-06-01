@@ -1,4 +1,4 @@
-package DMBS;
+package dbms;
 
 import java.io.File;
 import java.util.regex.Matcher;
@@ -19,7 +19,10 @@ public class Drop {
 			if(table.exists())
 			{
 				table.delete();
+				return true;
 			}
+			else
+				return false;
 		}
 		
 		Matcher drop_user=PATTERN_DROP_USER.matcher(s);

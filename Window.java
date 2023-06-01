@@ -1,5 +1,4 @@
-package DMBS;
-
+package dbms;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,20 +15,20 @@ public class Window {
 
 	public void init()
 	{
-		 // åˆ›å»º JFrame å®ä¾‹
-		 JFrame frame = new JFrame("ç™»å½•ç•Œé¢");
+		 // ´´½¨ JFrame ÊµÀı
+		 JFrame frame = new JFrame("µÇÂ¼½çÃæ");
 		 // Setting the width and height of frame
 		 frame.setBounds (450,250,350,200);
 		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 frame.setResizable(false);
         
 		 JPanel panel = new JPanel();    
-		 // æ·»åŠ é¢æ¿
+		 // Ìí¼ÓÃæ°å
 		 frame.add(panel);
 		 
 		 placeComponents(panel,frame);
 
-		 // è®¾ç½®ç•Œé¢å¯è§
+		 // ÉèÖÃ½çÃæ¿É¼û
 		 frame.setVisible(true);
 	}
 	
@@ -37,8 +36,8 @@ public class Window {
 	 {       
 		 panel.setLayout(null);
 
-	     // åˆ›å»º JLabel
-	     JLabel userLabel = new JLabel("ç”¨æˆ·å:");
+	     // ´´½¨ JLabel
+	     JLabel userLabel = new JLabel("ÓÃ»§Ãû:");
 	        
 	     userLabel.setBounds(10,20,80,25);
 	     panel.add(userLabel);
@@ -47,8 +46,8 @@ public class Window {
 	     userText.setBounds(100,20,165,25);
 	     panel.add(userText);
 
-	     // è¾“å…¥å¯†ç çš„æ–‡æœ¬åŸŸ
-	     JLabel passwordLabel = new JLabel("å¯†ç :");
+	     // ÊäÈëÃÜÂëµÄÎÄ±¾Óò
+	     JLabel passwordLabel = new JLabel("ÃÜÂë:");
 	     passwordLabel.setBounds(10,50,80,25);
 	     panel.add(passwordLabel);
 	        
@@ -56,12 +55,12 @@ public class Window {
 	     passwordText.setBounds(100,50,165,25);
 	     panel.add(passwordText);
 	        	        
-	     JButton loginButton = new JButton("ç™»å½•");
+	     JButton loginButton = new JButton("µÇÂ¼");
 	     loginButton.setBounds(120, 100, 80, 25);
 	     loginButton.addActionListener(new ActionListener() {
 	         @Override
 	         public void actionPerformed(ActionEvent e) {
-//	             å¼¹çª—
+//	             µ¯´°
 	            if(User.login(userText.getText(), new String(passwordText.getPassword())))
 	            {
 	            	frame.dispose();
@@ -81,12 +80,12 @@ public class Window {
 	 
 	 private static void start1()
 	 {
-		 JFrame frame = new JFrame("é”™è¯¯");
+		 JFrame frame = new JFrame("´íÎó");
 		 frame.setBounds (490,300,300,100);
 		 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		 frame.setResizable(false);
 		 
-		 JLabel error = new JLabel("ç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ã€‚");
+		 JLabel error = new JLabel("ÓÃ»§Ãû»òÃÜÂë´íÎó¡£");
 	        
 	     error.setBounds(10,20,80,25);
 	     frame.add(error);
@@ -95,14 +94,14 @@ public class Window {
 	 
 	 private static void start()
 	 {
-		 JFrame frame = new JFrame("å¤©å ‚DBMS");
+		 JFrame frame = new JFrame("ÌìÌÃDBMS");
 
 	     frame.setBounds (50,0,1200,740);
 	     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	     frame.setResizable(false);
 	        
 	     JPanel panel = new JPanel();    
-	     // æ·»åŠ é¢æ¿
+	     // Ìí¼ÓÃæ°å
 	     frame.add(panel);
 	     placeComponents_2(panel,frame);
 	     frame.setVisible(true);
@@ -113,23 +112,23 @@ public class Window {
 		 panel.setLayout(null);
 		 panel.setBackground(Color.GREEN);
 		 
-		 JLabel name=new JLabel("å¤©å ‚DBMS");
+		 JLabel name=new JLabel("ÌìÌÃDBMS");
 		 name.setBounds(450,0,1000,100);
-		 name.setFont(new Font("åæ–‡è¡Œæ¥·",1,50));
+		 name.setFont(new Font("»ªÎÄĞĞ¿¬",1,50));
 		 name.setForeground(Color.red);
 		 panel.add(name);
 		 
-		 JLabel sql=new JLabel("è¯·è¾“å…¥SQLè¯­å¥ï¼š");
+		 JLabel sql=new JLabel("ÇëÊäÈëSQLÓï¾ä£º");
 		 sql.setBounds(20, 60, 500, 100);
-		 sql.setFont(new Font("é»‘ä½“",1,30));
+		 sql.setFont(new Font("ºÚÌå",1,30));
 		 panel.add(sql);
 		 
 		 JTextField sqlText=new JTextField();
 		 sqlText.setBounds(245, 95, 900, 35);
-		 sqlText.setFont(new Font("é»‘ä½“",1,25));
+		 sqlText.setFont(new Font("ºÚÌå",1,25));
 		 panel.add(sqlText);
 		 
-		 JButton clearButton = new JButton("è¯·ç©º");
+		 JButton clearButton = new JButton("Çë¿Õ");
 	     clearButton.setBounds(1100, 65, 80, 25);
 	     panel.add(clearButton);
 	     
@@ -137,19 +136,19 @@ public class Window {
 		 DefaultTableModel tModel = new DefaultTableModel();
 		 table = new JTable(tModel);
 		 
-		 table.setForeground(Color.BLACK);                   // å­—ä½“é¢œè‰²
-	     table.setFont(new Font(null, Font.PLAIN, 14));      // å­—ä½“æ ·å¼
-	     table.setSelectionForeground(Color.DARK_GRAY);      // é€‰ä¸­åå­—ä½“é¢œè‰²
-	     table.setSelectionBackground(Color.LIGHT_GRAY);     // é€‰ä¸­åå­—ä½“èƒŒæ™¯
-	     table.setGridColor(Color.GRAY);                     // ç½‘æ ¼é¢œè‰²
+		 table.setForeground(Color.BLACK);                   // ×ÖÌåÑÕÉ«
+	     table.setFont(new Font(null, Font.PLAIN, 14));      // ×ÖÌåÑùÊ½
+	     table.setSelectionForeground(Color.DARK_GRAY);      // Ñ¡ÖĞºó×ÖÌåÑÕÉ«
+	     table.setSelectionBackground(Color.LIGHT_GRAY);     // Ñ¡ÖĞºó×ÖÌå±³¾°
+	     table.setGridColor(Color.GRAY);                     // Íø¸ñÑÕÉ«
 	 
-	     // è®¾ç½®è¡¨å¤´
-	     table.getTableHeader().setFont(new Font(null, Font.BOLD, 14));  // è®¾ç½®è¡¨å¤´åç§°å­—ä½“æ ·å¼
-	     table.getTableHeader().setForeground(Color.RED);                // è®¾ç½®è¡¨å¤´åç§°å­—ä½“é¢œè‰²
-	     table.getTableHeader().setResizingAllowed(false);               // è®¾ç½®ä¸å…è®¸æ‰‹åŠ¨æ”¹å˜åˆ—å®½
-	     table.getTableHeader().setReorderingAllowed(false);             // è®¾ç½®ä¸å…è®¸æ‹–åŠ¨é‡æ–°æ’åºå„åˆ—
+	     // ÉèÖÃ±íÍ·
+	     table.getTableHeader().setFont(new Font(null, Font.BOLD, 14));  // ÉèÖÃ±íÍ·Ãû³Æ×ÖÌåÑùÊ½
+	     table.getTableHeader().setForeground(Color.RED);                // ÉèÖÃ±íÍ·Ãû³Æ×ÖÌåÑÕÉ«
+	     table.getTableHeader().setResizingAllowed(false);               // ÉèÖÃ²»ÔÊĞíÊÖ¶¯¸Ä±äÁĞ¿í
+	     table.getTableHeader().setReorderingAllowed(false);             // ÉèÖÃ²»ÔÊĞíÍÏ¶¯ÖØĞÂÅÅĞò¸÷ÁĞ
 
-	     // è®¾ç½®è¡Œé«˜
+	     // ÉèÖÃĞĞ¸ß
 	     table.setRowHeight(30);
 	 
 	     JScrollPane jScrollPane=  new JScrollPane(table);
@@ -158,8 +157,7 @@ public class Window {
 		
 	     JTextField remindText=new JTextField();
 	     remindText.setBounds(100, 650, 1000, 35);
-	     remindText.setFont(new Font("é»‘ä½“",1,25));
-		 remindText.setText("");
+	     remindText.setFont(new Font("ºÚÌå",1,25));
 		 panel.add(remindText);
 	     
 		 sqlText.addKeyListener(new KeyAdapter() {
@@ -168,27 +166,27 @@ public class Window {
 					if((char)e.getKeyChar()==KeyEvent.VK_ENTER) {
 						remindText.setText("");
 						if(Grant.If_grantRight(Format.sqlFormat(sqlText.getText())))
-							remindText.setText("èµ‹äºˆæƒé™æˆåŠŸ");
+							remindText.setText("¸³ÓèÈ¨ÏŞ³É¹¦");
 						if(Revoke.If_revokeRight(Format.sqlFormat(sqlText.getText())))
-							remindText.setText("æ’¤é”€æƒé™æˆåŠŸ");
+							remindText.setText("³·ÏúÈ¨ÏŞ³É¹¦");
 						if(User.access.charAt(4)=='1'||User.access.charAt(4)=='2')
 							if(Create.Ifcreate_table(Format.sqlFormat(sqlText.getText())))
-								remindText.setText("åˆ›å»ºæˆåŠŸ");
+								remindText.setText("´´½¨³É¹¦");
 						if(User.access.charAt(5)=='1'||User.access.charAt(5)=='2')
 							if(Drop.Ifdrop_table(Format.sqlFormat(sqlText.getText())))
-								remindText.setText("åˆ é™¤æˆåŠŸ");
+								remindText.setText("É¾³ı³É¹¦");
 						if(User.access.charAt(6)=='1'||User.access.charAt(6)=='2')	
 							if(Alter.Ifalter_table(Format.sqlFormat(sqlText.getText())))
-								remindText.setText("ä¿®æ”¹æˆåŠŸ");
+								remindText.setText("ĞŞ¸Ä³É¹¦");
 						if(User.access.charAt(1)=='1'||User.access.charAt(1)=='2')	
 							if(Insert.Ifinsert(Format.sqlFormat(sqlText.getText())))
-								remindText.setText("æ’å…¥æˆåŠŸ");
+								remindText.setText("²åÈë³É¹¦");
 						if(User.access.charAt(3)=='1'||User.access.charAt(3)=='2')	
-							if(delete.ifdelete(Format.sqlFormat(sqlText.getText())))
-								remindText.setText("åˆ é™¤æˆåŠŸ");
+							if(Delete.ifdelete(Format.sqlFormat(sqlText.getText())))
+								remindText.setText("É¾³ı³É¹¦");
 						if(User.access.charAt(2)=='1'||User.access.charAt(2)=='2')	
 							if(Update.Ifupdate(Format.sqlFormat(sqlText.getText())))
-								remindText.setText("æ›´æ–°æˆåŠŸ");
+								remindText.setText("¸üĞÂ³É¹¦");
 						if(User.access.charAt(0)=='1'||User.access.charAt(0)=='2')	
 						if(Select.Ifselect(Format.sqlFormat(sqlText.getText())))
 						{
@@ -207,17 +205,17 @@ public class Window {
 								container[i]=b;
 							}
 							tModel.setDataVector(container, columnName);
-							remindText.setText("æŸ¥è¯¢æˆåŠŸ");
+							remindText.setText("²éÑ¯³É¹¦");
 						}
 						if(remindText.getText().equals(""))
-							remindText.setText("æ“ä½œå¤±è´¥");
+							remindText.setText("²Ù×÷Ê§°Ü");
 					}
 				}
 			});
 		 clearButton.addActionListener(new ActionListener() {
 	         @Override
 	         public void actionPerformed(ActionEvent e) {
-//	             å¼¹çª—
+//	             µ¯´°
 	            	sqlText.setText("");
 	            	remindText.setText("");
 	            	tModel.setColumnCount(0);

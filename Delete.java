@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 public class Delete {
-    //ä»¥deleteå¼€å¤´çš„sqlè¯­å¥
+    //ÒÔdelete¿ªÍ·µÄsqlÓï¾ä
     private static final Pattern pattern1 = 
     Pattern.compile("delete from ([a-z]+) where (.*)");
     private static final Pattern pattern2 = 
@@ -13,8 +13,8 @@ public class Delete {
     public static boolean ifdelete(String sql){
         Matcher matcher1 = pattern1.matcher(sql);
         if (matcher1.find()) {
-            String tableName = matcher1.group(1);  // è·å–è¡¨å
-            //åˆ¤æ–­è¡¨æ˜¯å¦å­˜åœ¨
+            String tableName = matcher1.group(1);  // »ñÈ¡±íÃû
+            //ÅĞ¶Ï±íÊÇ·ñ´æÔÚ
             File table = new File(tableName+".txt");
             if(table.exists()){
                 Table.getTable(tableName);
@@ -25,7 +25,7 @@ public class Delete {
             		  a.remove((int) result.get(j));
             	  }
               }
-                //æŠŠåˆ é™¤åçš„æ•°æ®å†™å…¥æ–‡ä»¶
+                //°ÑÉ¾³ıºóµÄÊı¾İĞ´ÈëÎÄ¼ş
                 Table.inTable(tableName);
                 return true;
             }
@@ -35,13 +35,16 @@ public class Delete {
     
         matcher1 = pattern2.matcher(sql);
         if(matcher1.find()){
-            String tableName1 = matcher1.group(1);//è·å–è¡¨å
-            //æ¸…ç©ºæ•´ä¸ªè¡¨ï¼Œåªç•™ä¸‹åˆ—åå’Œæ•°æ®ç±»å‹
+            String tableName1 = matcher1.group(1);//»ñÈ¡±íÃû
+            //Çå¿ÕÕû¸ö±í£¬Ö»ÁôÏÂÁĞÃûºÍÊı¾İÀàĞÍ
             File table2 = new File(tableName1+".txt");
             if(table2.exists()){
-                //æ¸…ç©ºæ•´ä¸ªè¡¨ï¼Œåªç•™ä¸‹åˆ—åå’Œæ•°æ®ç±»å‹
-                Table.getTable(tableName1);
-                Table.Table.clear();
+                //Çå¿ÕÕû¸ö±í£¬Ö»ÁôÏÂÁĞÃûºÍÊı¾İÀàĞÍ
+            	Table.getTable(tableName1);
+            	for(int i = 0; i < Table.Column.size(); i++){
+              	  List<Object> a = Table.Table.get(Table.Column.get(i));
+              	  a.clear();
+            	}
                 Table.inTable(tableName1);
                 return true;
         }

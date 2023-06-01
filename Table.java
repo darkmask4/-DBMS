@@ -1,4 +1,4 @@
-package DMBS;
+package dbms;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,7 +19,7 @@ public class Table {
 	public static List<String> Column;
 	public static Map<String,List<Object>> Table;
 	
-	public static void getTable(String s)//åˆ›å»ºä¸´æ—¶è¡¨
+	public static void getTable(String s)//´´½¨ÁÙÊ±±í
 	{
 		Type=new ArrayList<>();
 		Column=new ArrayList<>();
@@ -27,8 +27,8 @@ public class Table {
 		
 		try {
 			File table=new File(s+".txt");
-			FileReader f=new FileReader(table);//æ–‡ä»¶è¯»å–å¯¹è±¡
-			BufferedReader f1=new BufferedReader(f);//å­—ç¬¦æµå¯¹è±¡
+			FileReader f=new FileReader(table);//ÎÄ¼ş¶ÁÈ¡¶ÔÏó
+			BufferedReader f1=new BufferedReader(f);//×Ö·ûÁ÷¶ÔÏó
 			
 			String str=null;
 			while((str=f1.readLine())!=null) {
@@ -46,8 +46,7 @@ public class Table {
 							column_1.add(Integer.parseInt(column[i]));
 					}
 				}
-				
-				if(column[1].equals("char"))
+				else if(column[1].equals("char"))
 				{
 					for(int i=2;i<column.length;i++)
 					{
@@ -57,16 +56,14 @@ public class Table {
 							column_1.add(column[i].charAt(0));
 					}
 				}
-				
-				if(column[1].contains("char("))
+				else if(column[1].contains("char("))
 				{
 					for(int i=2;i<column.length;i++)
 					{
 						column_1.add(column[i]);
 					}
 				}
-				
-				if(column[1].equals("date"))
+				else if(column[1].equals("date"))
 				{
 					SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 					for(int i=2;i<column.length;i++)
@@ -75,6 +72,13 @@ public class Table {
 							column_1.add(column[i]);
 						else
 							column_1.add(formatter.parse(column[i]));
+					}
+				}
+				else
+				{
+					for(int i=2;i<column.length;i++)
+					{
+						column_1.add(column[i]);
 					}
 				}
 				
@@ -92,10 +96,10 @@ public class Table {
 		
 	}
 	
-	public static void inTable(String tableName)//å†™å…¥æ–‡ä»¶
+	public static void inTable(String tableName)//Ğ´ÈëÎÄ¼ş
 	{
-		FileWriter f=null;//åˆ›å»ºæ–‡ä»¶å†™å…¥å¯¹è±¡
-		BufferedWriter f1=null;//åˆ›å»ºå­—ç¬¦æµå†™å…¥å¯¹è±¡
+		FileWriter f=null;//´´½¨ÎÄ¼şĞ´Èë¶ÔÏó
+		BufferedWriter f1=null;//´´½¨×Ö·ûÁ÷Ğ´Èë¶ÔÏó
 		
 		try {
 		f=new FileWriter(tableName+".txt");
@@ -114,10 +118,10 @@ public class Table {
 		}
 		}catch(Exception e){
 			
-		}finally {//å¦‚æœæ²¡æœ‰catch å¼‚å¸¸ï¼Œç¨‹åºæœ€ç»ˆä¼šæ‰§è¡Œåˆ°è¿™é‡Œ
+		}finally {//Èç¹ûÃ»ÓĞcatch Òì³££¬³ÌĞò×îÖÕ»áÖ´ĞĞµ½ÕâÀï
 			try {
 			f1.close();
-			f.close();//å…³é—­æ–‡ä»¶
+			f.close();//¹Ø±ÕÎÄ¼ş
 		} catch (Exception e2) {
 			// TODO: handle exception
 		}

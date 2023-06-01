@@ -1,5 +1,4 @@
-package DMBS;
-
+package dbms;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +6,7 @@ public class User{
 	 public static String access;
    public static String userName;
 
-    //æ³¨å†Œæ—¶å°†ç”¨æˆ·ä¿¡æ¯å†™å…¥æ–‡ä»¶
+    //×¢²áÊ±½«ÓÃ»§ĞÅÏ¢Ğ´ÈëÎÄ¼ş
 	 public static boolean Register(String id, String password){
       try{
         File file = new File("user.txt");
@@ -16,9 +15,9 @@ public class User{
           String line = null;
           while((line = br.readLine()) != null){
             String[] info = line.split(" ");
-            //åˆ¤æ–­ç”¨æˆ·åæ˜¯å¦å·²å­˜åœ¨
+            //ÅĞ¶ÏÓÃ»§ÃûÊÇ·ñÒÑ´æÔÚ
             if(info[0].equals(id)){
-              System.out.println("è¯¥ç”¨æˆ·å·²å­˜åœ¨");
+              System.out.println("¸ÃÓÃ»§ÒÑ´æÔÚ");
               br.close();
               fr.close();
               return false;
@@ -39,7 +38,7 @@ public class User{
       return true;
     }
 	 
-    //ç™»å…¥éªŒè¯
+    //µÇÈëÑéÖ¤
     public static boolean login(String id,String password){
       try{
         File file = new File("user.txt");
@@ -48,7 +47,7 @@ public class User{
           String line = null;
           while((line = br.readLine()) != null){
             String[] info = line.split(" ");
-            //åˆ¤æ–­ç”¨æˆ·åå’Œå¯†ç æ˜¯å¦æ­£ç¡®
+            //ÅĞ¶ÏÓÃ»§ÃûºÍÃÜÂëÊÇ·ñÕıÈ·
             if(id.equals(info[0]) && password.equals(info[1])){
 
               access = info[2];
@@ -72,7 +71,7 @@ public class User{
     		boolean a=false;
             File file = new File("user.txt");
             List<String> User = new ArrayList<>();
-            //å°†user.txtä¸­çš„å†…å®¹è¯»å…¥åˆ°Userä¸­
+            //½«user.txtÖĞµÄÄÚÈİ¶ÁÈëµ½UserÖĞ
             try{
                 FileReader fr = new FileReader(file);
                 BufferedReader br = new BufferedReader(fr);
@@ -91,7 +90,7 @@ public class User{
                     User.remove(i);
                 }
             }
-            //å°†Userä¸­çš„å†…å®¹å†™å…¥åˆ°user.txtä¸­
+            //½«UserÖĞµÄÄÚÈİĞ´Èëµ½user.txtÖĞ
             try{
                 FileWriter fw = new FileWriter(file);
                 BufferedWriter bw = new BufferedWriter(fw);

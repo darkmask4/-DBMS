@@ -1,4 +1,4 @@
-package DMBS;
+package dbms;
 
 public class Test {
 

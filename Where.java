@@ -1,4 +1,4 @@
-package DMBS;
+package dbms;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -132,7 +132,7 @@ public class Where {
 		for (int cd:b)
 		{
 			if(!result.contains(cd))
-			{ //涓诲姩鍒ゆ柇鏄惁鍖呭惈閲嶅鍏冪礌 
+			{ //主动判断是否包含重复元素 
 				result.add(cd);
 			}
 		}
