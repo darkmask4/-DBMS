@@ -89,7 +89,7 @@ public class Select {
 						}
 						for(int j=0;j<con.size();j++)
 						{
-							con.set(j, con1.get((int)sort.get(j)));
+							con.set((int)sort.get(j), con1.get(j));
 						}
 					}
 					
@@ -233,7 +233,7 @@ public class Select {
 					}
 					for(int j=0;j<con.size();j++)
 					{
-						con.set(j, con1.get((int)sort.get(j)));
+						con.set((int)sort.get(j), con1.get(j));
 					}
 				}
 				

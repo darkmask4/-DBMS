@@ -119,7 +119,7 @@ public class Where {
 				}
 			}
 			
-			for(int k=0;k<Table.Column.size();k++)
+			for(int k=0;k<Table.Table.get(Table.Column.get(0)).size();k++)
 			{
 				if(Collections.frequency(a,k)==condition_1.length)
 				{

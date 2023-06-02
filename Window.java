@@ -137,19 +137,19 @@ public class Window {
 		 table = new JTable(tModel);
 		 
 		 table.setForeground(Color.BLACK);                   // 字体颜色
-	     table.setFont(new Font(null, Font.PLAIN, 14));      // 字体样式
+	     table.setFont(new Font(null, Font.PLAIN, 20));      // 字体样式
 	     table.setSelectionForeground(Color.DARK_GRAY);      // 选中后字体颜色
 	     table.setSelectionBackground(Color.LIGHT_GRAY);     // 选中后字体背景
 	     table.setGridColor(Color.GRAY);                     // 网格颜色
 	 
 	     // 设置表头
-	     table.getTableHeader().setFont(new Font(null, Font.BOLD, 14));  // 设置表头名称字体样式
+	     table.getTableHeader().setFont(new Font(null, Font.BOLD, 20));  // 设置表头名称字体样式
 	     table.getTableHeader().setForeground(Color.RED);                // 设置表头名称字体颜色
 	     table.getTableHeader().setResizingAllowed(false);               // 设置不允许手动改变列宽
 	     table.getTableHeader().setReorderingAllowed(false);             // 设置不允许拖动重新排序各列
 
 	     // 设置行高
-	     table.setRowHeight(30);
+	     table.setRowHeight(40);
 	 
 	     JScrollPane jScrollPane=  new JScrollPane(table);
 	     jScrollPane.setBounds(50,140,1100,500);
@@ -187,8 +187,9 @@ public class Window {
 						if(User.access.charAt(2)=='1'||User.access.charAt(2)=='2')	
 							if(Update.Ifupdate(Format.sqlFormat(sqlText.getText())))
 								remindText.setText("更新成功");
-						if(User.access.charAt(0)=='1'||User.access.charAt(0)=='2')	
-						if(Select.Ifselect(Format.sqlFormat(sqlText.getText())))
+						if(User.access.charAt(0)=='1'||User.access.charAt(0)=='2')
+						{
+						if(Join.Ifjoin(Format.sqlFormat(sqlText.getText())))
 						{
 							int rowCount = Table.Table.get(Table.Column.get(0)).size();
 							Object[][] container=new Object[rowCount][];
@@ -206,6 +207,26 @@ public class Window {
 							}
 							tModel.setDataVector(container, columnName);
 							remindText.setText("查询成功");
+						}
+						else if(Select.Ifselect(Format.sqlFormat(sqlText.getText())))
+						{
+							int rowCount = Table.Table.get(Table.Column.get(0)).size();
+							Object[][] container=new Object[rowCount][];
+							String[] columnName = Table.Column.toArray(new String[Table.Column.size()]);
+							
+							for(int i=0;i<rowCount;i++)
+							{
+								List<Object> a=new ArrayList<>();
+								for(int j=0;j<Table.Column.size();j++)
+								{
+									a.add(Table.Table.get(Table.Column.get(j)).get(i));
+								}
+								Object[] b=a.toArray(new Object[a.size()]);
+								container[i]=b;
+							}
+							tModel.setDataVector(container, columnName);
+							remindText.setText("查询成功");
+						}
 						}
 						if(remindText.getText().equals(""))
 							remindText.setText("操作失败");
