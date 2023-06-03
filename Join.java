@@ -1,5 +1,4 @@
-package dbms;
-
+package DMBS;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -114,7 +113,7 @@ public class Join {
 					}	
 				}
 				
-				//whereÌõ¼şÅĞ¶Ï
+				//whereæ¡ä»¶åˆ¤æ–­
 				List<Integer> result=new ArrayList<>();
 				for(int i=0;i<Table.Table.get(Table.Column.get(0)).size();i++)
 				{
@@ -130,7 +129,7 @@ public class Join {
 						a.remove((int)result.get(j));
 					}
 				}
-				//ÅÅĞò
+				//æ’åº
 				
 					List<Integer> sort=new ArrayList<>();
 					List<Object> c=new ArrayList<>();
@@ -180,7 +179,7 @@ public class Join {
 						}
 					}
 					
-				//Ñ¡ÔñÁĞ
+				//é€‰æ‹©åˆ—
 				if(column[0].equals("*"))
 				{
 					return true;
@@ -302,7 +301,7 @@ public class Join {
 					}	
 				}
 				
-				//whereÌõ¼şÅĞ¶Ï
+				//whereæ¡ä»¶åˆ¤æ–­
 				List<Integer> result=new ArrayList<>();
 				for(int i=0;i<Table.Table.get(Table.Column.get(0)).size();i++)
 				{
@@ -439,7 +438,7 @@ public class Join {
 					}	
 				}
 				
-				//ÅÅĞò
+				//æ’åº
 				
 				List<Integer> sort=new ArrayList<>();
 				List<Object> c=new ArrayList<>();
@@ -489,7 +488,7 @@ public class Join {
 					}
 				}
 				
-			//Ñ¡ÔñÁĞ
+			//é€‰æ‹©åˆ—
 			if(column[0].equals("*"))
 			{
 				return true;
@@ -609,7 +608,7 @@ public class Join {
 					}	
 				}
 				
-				//Ñ¡ÔñÁĞ
+				//é€‰æ‹©åˆ—
 				if(column[0].equals("*"))
 				{
 					return true;

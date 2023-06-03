@@ -1,19 +1,18 @@
-package dbms;
+package DMBS;
 
 public class Format {
     public static String sqlFormat(String input){
         String sql = "";
-        //È¥µô×Ö·û´®Ç°ºóÁ½¶ËµÄ¿Õ¸ñ
+        //å»æ‰å­—ç¬¦ä¸²å‰åä¸¤ç«¯çš„ç©ºæ ¼
         sql = input.trim();
-        //½«×Ö·û´®¶¼×ª»¯ÎªĞ¡Ğ´
+        //å°†å­—ç¬¦ä¸²éƒ½è½¬åŒ–ä¸ºå°å†™
         String string = sql.toLowerCase();
-        //Í¨¹ıÕıÔò±í´ïÊ½½«¶à¸ö¿Õ¸ñ×ª»»ÎªÒ»¸ö¿Õ¸ñ
+        //é€šè¿‡æ­£åˆ™è¡¨è¾¾å¼å°†å¤šä¸ªç©ºæ ¼è½¬æ¢ä¸ºä¸€ä¸ªç©ºæ ¼
         String str = string.replaceAll("\\s{2,}", " ");
-        //È¥µô;Ç°µÄ¿Õ¸ñ
+        //å»æ‰;å‰çš„ç©ºæ ¼
         String s = str.replaceFirst("( ;)$", ";");
-        //È¥µô×îºóµÄ;
+        //å»æ‰æœ€åçš„;
         s=s.replaceAll(";", "");
         return s;
     }
 }
-

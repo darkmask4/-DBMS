@@ -1,4 +1,4 @@
-package dbms;
+package DMBS;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class Select {
 			if(table.exists())
 			{
 				Table.getTable(tableName);
-				//whereÌõ¼şÅĞ¶Ï
+				//whereæ¡ä»¶åˆ¤æ–­
 				List<Integer> result=new ArrayList<>();
 				for(int i=0;i<Table.Table.get(Table.Column.get(0)).size();i++)
 				{
@@ -43,7 +43,7 @@ public class Select {
 						a.remove((int)result.get(j));
 					}
 				}
-				//ÅÅĞò
+				//æ’åº
 				
 					List<Integer> sort=new ArrayList<>();
 					List<Object> c=new ArrayList<>();
@@ -93,7 +93,7 @@ public class Select {
 						}
 					}
 					
-				//Ñ¡ÔñÁĞ
+				//é€‰æ‹©åˆ—
 				if(column[0].equals("*"))
 				{
 					return true;
@@ -131,7 +131,7 @@ public class Select {
 			if(table.exists())
 			{
 				Table.getTable(tableName);
-				//whereÌõ¼şÅĞ¶Ï
+				//whereæ¡ä»¶åˆ¤æ–­
 				List<Integer> result=new ArrayList<>();
 				for(int i=0;i<Table.Table.get(Table.Column.get(0)).size();i++)
 				{
@@ -148,7 +148,7 @@ public class Select {
 					}
 				}
 				
-				//Ñ¡ÔñÁĞ
+				//é€‰æ‹©åˆ—
 				if(column[0].equals("*"))
 				{
 					return true;
@@ -185,7 +185,7 @@ public class Select {
 			if(table.exists())
 			{
 				Table.getTable(tableName);
-				//ÅÅĞò
+				//æ’åº
 				
 				List<Integer> sort=new ArrayList<>();
 				List<Object> c=new ArrayList<>();
@@ -237,7 +237,7 @@ public class Select {
 					}
 				}
 				
-			//Ñ¡ÔñÁĞ
+			//é€‰æ‹©åˆ—
 			if(column[0].equals("*"))
 			{
 				return true;

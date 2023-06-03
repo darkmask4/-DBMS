@@ -1,4 +1,4 @@
-package dbms;
+package DMBS;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -35,11 +35,11 @@ public class Create {
 			}
 		}
 		
-		FileWriter f=null;//´´½¨ÎÄ¼şĞ´Èë¶ÔÏó
-		BufferedWriter f1=null;//´´½¨×Ö·ûÁ÷Ğ´Èë¶ÔÏó
+		FileWriter f=null;//åˆ›å»ºæ–‡ä»¶å†™å…¥å¯¹è±¡
+		BufferedWriter f1=null;//åˆ›å»ºå­—ç¬¦æµå†™å…¥å¯¹è±¡
 	
 		try {
-			//ÕâÀï°ÑÎÄ¼şĞ´Èë¶ÔÏóºÍ×Ö·ûÁ÷Ğ´Èë¶ÔÏó·Ö¿ªĞ´ÁË
+			//è¿™é‡ŒæŠŠæ–‡ä»¶å†™å…¥å¯¹è±¡å’Œå­—ç¬¦æµå†™å…¥å¯¹è±¡åˆ†å¼€å†™äº†
 			f=new FileWriter(tableName+".txt");
 			f1=new BufferedWriter(f);
 			
@@ -54,10 +54,10 @@ public class Create {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-		}finally {//Èç¹ûÃ»ÓĞcatch Òì³££¬³ÌĞò×îÖÕ»áÖ´ĞĞµ½ÕâÀï
+		}finally {//å¦‚æœæ²¡æœ‰catch å¼‚å¸¸ï¼Œç¨‹åºæœ€ç»ˆä¼šæ‰§è¡Œåˆ°è¿™é‡Œ
 			try {
 				f1.close();
-				f.close();//¹Ø±ÕÎÄ¼ş
+				f.close();//å…³é—­æ–‡ä»¶
 			} catch (Exception e2) {
 				// TODO: handle exception
 			}
